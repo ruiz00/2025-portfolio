@@ -1,158 +1,632 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="keywords" content="Bryan, Bryan Gwanulaga, Cybersecurity Portfolio">
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="title" content="Bryan Gwanulaga - Cybersecurity Enthusiast and Developer">
-  <meta name="description" content="Welcome to my portfolio! I am Bryan Gwanulaga, a cybersecurity enthusiast and developer passionate about building secure and innovative solutions. Explore my work here.">
-  <title>Bryan Gwanulaga - Cybersecurity Enthusiast and Developer</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bryan Gwanulaga - Cybersecurity Portfolio</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons (instead of react components) -->
+    <script type="module">
+        import { createIcons, icons } from 'https://unpkg.com/lucide@latest/dist/esm/lucide.js';
+        createIcons({ icons });
+    </script>
+    <style>
+        /* Custom styles for appearance */
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .bg-gray-750 {
+            background-color: #2c333e; /* Slightly lighter gray for hover effect */
+        }
+        /* Style for the background image blend effect */
+        #hero {
+            background-image: url('https://placehold.co/2070x1000/171717/303030?text=Cybersecurity+Network+Background');
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-blend-mode: multiply;
+        }
+    </style>
 </head>
-<body>
-  <!-- Navigation Bar -->
-  <header>
-    <nav>
-      <div class="logo">BRYAN GWANULAGA</div>
-      <ul class="nav-links">
-        <li><a href="#hero">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#work">Work</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-      <div class="hamburger" aria-label="Toggle navigation">
-        <i class="fas fa-bars"></i>
-      </div>
+<body class="bg-gray-900 text-gray-100">
+
+    <!-- Configuration Data (Simplified for JS access) -->
+    <script>
+        const config = {
+            name: "BRYAN GWANULAGA",
+            tagline: "Cybersecurity learner • Networking practitioner • Programmer",
+            email: "gwanulagabryan@gmail.com",
+            linkedin: "https://www.linkedin.com/in/gwanulaga-bryan/",
+            github: "https://github.com/ruiz00",
+            about: "I am a passionate technology enthusiast studying Computer Science with strong interests in cybersecurity, networking, and programming. I enjoy understanding how systems work under the hood, finding vulnerabilities, and building tools that make systems more reliable and secure.",
+            aboutStats: [
+                { value: "20+", label: "Projects", sub: "Cybersecurity & Programming" },
+                { value: "25+", label: "Labs", sub: "Networking & Pentesting" },
+                { value: "4+", label: "Languages", sub: "C, Python, Bash, Java , C++ ,SQl" },
+            ],
+            projectCategories: [
+                {
+                    title: "Cybersecurity Projects",
+                    icon: "lock",
+                    items: [
+                        { title: "SSH Reverse Tunneling", desc: "HTB-style labs focusing on pivoting and secure access methods.", tech: ["SSH", "Tunneling"] },
+                        { title: "Linux Privilege Escalation", desc: "Practice scenarios identifying misconfigurations and kernel exploits.", tech: ["Linux", "PrivEsc"] },
+                        { title: "Network Enumeration", desc: "Vulnerability analysis and mapping using industry-standard tools.", tech: ["Nmap", "Analysis"] },
+                        { title: "Active directory Enumeration", desc: "Basics active directory enumeration techniaues and exploitation.", tech: ["Netexec", "Crackmapexec", "impacket"] },
+                        { title: "Pivoting Operations", desc: "Advanced lateral movement using ligolo-ng and proxy agents.", tech: ["ligolo-ng", "Proxies"] }
+                    ]
+                },
+                {
+                    title: "Networking Projects",
+                    icon: "globe",
+                    items: [
+                        { title: "Switch Configuration", desc: "VLAN setup, trunking, and MAC Address Table management.", tech: ["Cisco", "VLAN"] },
+                        { title: "Subnetting & Broadcasts", desc: "Complex calculations for /28, /30, /24 subnets and network segmentation.", tech: ["Subnetting", "Design"] },
+                        { title: "Routing Protocols", desc: "Implementation of Static & dynamic routing labs (RIP, OSPF).", tech: ["OSPF", "RIP", "Routing"] },
+                        { title: "Network Simulations", desc: "Large scale network topology design and simulation.", tech: ["eNSP", "Simulation"] }
+                    ]
+                },
+                {
+                    title: "Programming Projects",
+                    icon: "code",
+                    items: [
+                        { title: "C Hash Table", desc: "Custom Dictionary implementation managing memory and collisions.", tech: ["C", "Data Structures"] },
+                        { title: "Binary-to-Hex Converter", desc: "Low-level tool for data format conversion written in C.", tech: ["C", "Binary"] },
+                        { title: "Student Management System", desc: "Java application utilizing arrays and file I/O for data persistence.", tech: ["Java", "File I/O"] },
+                        { title: "Automation Suite", desc: "Collection of Python scripts for task automation and tooling.", tech: ["Python", "Automation"] },
+                        { title: "Image manipulation app ", desc: "A tool in C to manipulate ppm image.", tech: ["C", "Image Manipulation"] }
+                    ]
+                }
+            ],
+            skills: [
+                { category: "Programming", icon: "code", tools: ["C", "C++", "Python", "Bash", "Java"] },
+                { category: "Networking", icon: "network", tools: ["Cisco", "eNSP", "Subnetting", "Routing"] },
+                { category: "Cybersecurity", icon: "shield", tools: ["nmap", "Burp Suite", "netexec", "ligolo-ng","Metasploit","crackmapexec"] },
+                { category: "OS", icon: "server", tools: ["Linux (Kali/Ubuntu)", "Windows","Android os"] },
+                { category: "Development", icon: "laptop", tools: ["Git", "GitHub", "VSCode"] },
+            ],
+            blogPosts: [
+                { title: "Beginner's Guide to Subnetting", snippet: "Understanding networks with step-by-step examples." },
+                { title: "How I Built a Hash Table in C", snippet: "Memory management, chains, hashing & pitfalls." },
+                { title: "Linux Privilege Escalation Basics", snippet: "What to look for during a CTF or pentest." },
+            ],
+        };
+    </script>
+    
+    <!-- Notification Container -->
+    <div id="notification-container" class="fixed top-4 right-4 z-[100]"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-gray-900/95 backdrop-blur-md border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="#hero" class="text-xl font-black tracking-tighter text-white">
+                    BRYAN<span class="text-emerald-500">.DEV</span>
+                </a>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="#hero" class="text-sm font-medium text-gray-300 hover:text-emerald-400 transition uppercase tracking-wide">Home</a>
+                    <a href="#about" class="text-sm font-medium text-gray-300 hover:text-emerald-400 transition uppercase tracking-wide">About</a>
+                    <a href="#projects" class="text-sm font-medium text-gray-300 hover:text-emerald-400 transition uppercase tracking-wide">Projects</a>
+                    <a href="#skills" class="text-sm font-medium text-gray-300 hover:text-emerald-400 transition uppercase tracking-wide">Skills</a>
+                    <a href="#blog" class="text-sm font-medium text-gray-300 hover:text-emerald-400 transition uppercase tracking-wide">Blog</a>
+                    <a href="#contact" class="text-sm font-medium text-gray-300 hover:text-emerald-400 transition uppercase tracking-wide">Contact</a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-button" class="md:hidden text-gray-300 hover:text-emerald-400">
+                    <i data-lucide="menu" id="menu-icon" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-gray-800 border-b border-gray-700">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 text-center">
+                <a href="#hero" class="mobile-link block px-3 py-4 text-base font-bold text-white hover:bg-gray-700 rounded-md">Home</a>
+                <a href="#about" class="mobile-link block px-3 py-4 text-base font-bold text-white hover:bg-gray-700 rounded-md">About</a>
+                <a href="#projects" class="mobile-link block px-3 py-4 text-base font-bold text-white hover:bg-gray-700 rounded-md">Projects</a>
+                <a href="#skills" class="mobile-link block px-3 py-4 text-base font-bold text-white hover:bg-gray-700 rounded-md">Skills</a>
+                <a href="#blog" class="mobile-link block px-3 py-4 text-base font-bold text-white hover:bg-gray-700 rounded-md">Blog</a>
+                <a href="#contact" class="mobile-link block px-3 py-4 text-base font-bold text-white hover:bg-gray-700 rounded-md">Contact</a>
+            </div>
+        </div>
     </nav>
-  </header>
-<!-- Ready to Innovate Section -->
-<section id="innovate">
-  <div class="innovate-content">
-    <h2>Ready to Innovate</h2>
-    <h3>Aspiring Cybersecurity Engineer | Tech Enthusiast</h3>
-    </div>
-  </div>
-</section>
-  <!-- Hero Section -->
-  <section id="hero">
-    <div class="hero-content">
-      <h1>Hi, I'm Bryan Gwanulaga</h1>
-      <p>A cybersecurity enthusiast aspiring  to build secure and innovative solutions.</p>
-      <a href="#work" class="btn">Explore My Work</a>
-    </div>
-  </section>
 
-  <!-- About Section -->
-<section id="about">
-  <h2>About Me</h2>
-  <div class="about-content">
-    <h3>Dedicated Computer Enthusiast & Cybersecurity Specialist</h3>
-    <p>
-      I'm a dedicated computer enthusiast with a fervent passion for technology. My unquenchable curiosity and keen interest in the digital realm have driven me to specialize in cybersecurity. My goal is to protect and secure information, ensuring that cyberspace remains a safe place for everyone.
-    </p>
-    <div class="about-details">
-      <div class="about-section">
-        <h4>My Expertise</h4>
-        <ul>
-          <li>Uncovering vulnerabilities and developing robust security solutions.</li>
-          <li>Team work.</li>
-          <li>Analyzing systems with a sharp eye for detail.</li>
-          <li>Constantly learning and growing in the ever-evolving world of cybersecurity.</li>
-        </ul>
-      </div>
-      <div class="about-section">
-        <h4>Programming Languages</h4>
-        <ul>
-          <li>C</li>
-          <li>Python</li>
-          <li>Bash Scripting</li>
-          <li>C++</li>
-        </ul>
-      </div>
-      <div class="about-section">
-        <h4>Networking & Collaboration</h4>
-        <ul>
-          <li>Mastering computer networks and understanding how devices communicate.</li>
-          <li>Active member of the cybersecurity club at my school.</li>
-          <li>Computer maintenance and repair.</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
+    <main>
+        
+        <!-- Hero Section -->
+        <section id="hero" class="min-h-screen flex items-center justify-center text-center px-4 pt-16 bg-gray-900/90">
+            <div class="max-w-4xl mx-auto space-y-6">
+                <div class="inline-block mb-2">
+                    <span class="px-4 py-2 rounded-full bg-emerald-500/20 text-emerald-400 font-mono text-sm border border-emerald-500/30">
+                        System.out.println("Hello World");
+                    </span>
+                </div>
+                <h1 class="text-5xl md:text-7xl font-black text-white tracking-tight leading-none">
+                    Hi, I'm <span class="text-emerald-500">BRYAN GWANULAGA</span>
+                </h1>
+                <p class="text-xl md:text-2xl text-gray-300 font-light max-w-2xl mx-auto">
+                    Cybersecurity learner • Networking practitioner • Programmer
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4 pt-8">
+                    <a href="#projects" class="px-8 py-4 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-lg transition duration-300 shadow-lg shadow-emerald-500/25">
+                        See My Projects
+                    </a>
+                    <a href="#contact" class="px-8 py-4 bg-transparent border-2 border-gray-600 hover:border-gray-400 text-white font-bold rounded-lg transition duration-300">
+                        Contact Me
+                    </a>
+                </div>
+            </div>
+        </section>
 
-<!-- Work Section (Skills, Certifications) -->
-<section id="work">
-  <h2>My Work</h2>
-  <div class="horizontal-sections">
-    <div class="dropdown-section">
-      <div class="dropdown-header" onclick="toggleDropdown('skills')">
-        <h3>Skills <i class="fas fa-chevron-down"></i></h3>
-      </div>
-      <div class="dropdown-content" id="skills">
-        <ul class="skills-list">
-          <ul><img src="icons/C.png" alt="C Icon" class="skill-icon"></ul>
-          <ul><img src="icons/python.png" alt="Python Icon" class="skill-icon"></ul>
-          <ul><img src="icons/linux.jpeg" alt="Linux Icon" class="skill-icon"></ul>
-          <ul><img src="icons/windows.png" alt="Windows Icon" class="skill-icon"></ul>
-          <ul><img src="icons/github.png" alt="github Icon" class="skill-icon"></ul>
-          <ul><img src="icons/mac.jpg" alt="mac Icon" class="skill-icon"></ul>
+        <!-- About Section -->
+        <section id="about" class="py-24 px-4 bg-gray-900">
+            <div class="max-w-6xl mx-auto">
+                <h2 class="text-3xl md:text-5xl font-extrabold mb-12 text-center text-white relative">
+                    About Me
+                    <span class="block w-20 h-1 bg-emerald-500 mx-auto mt-4 rounded-full"></span>
+                </h2>
+                
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="space-y-6 text-lg text-gray-300 leading-relaxed">
+                        <p>I am a passionate technology enthusiast studying Computer Science with strong interests in cybersecurity, networking, and programming. I enjoy understanding how systems work under the hood, finding vulnerabilities, and building tools that make systems more reliable and secure.</p>
+                        <div class="flex flex-wrap gap-4 mt-6">
+                            <span class="flex items-center text-sm font-medium text-emerald-400">
+                                <i data-lucide="shield" class="w-4 h-4 mr-2"></i> Cybersecurity
+                            </span>
+                            <span class="flex items-center text-sm font-medium text-emerald-400">
+                                <i data-lucide="code" class="w-4 h-4 mr-2"></i> Low-level Programming
+                            </span>
+                            <span class="flex items-center text-sm font-medium text-emerald-400">
+                                <i data-lucide="network" class="w-4 h-4 mr-2"></i> Networking
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <!-- Stats Grid -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="bg-gray-800 p-6 rounded-xl border border-gray-700 hover:border-emerald-500/50 transition duration-300">
+                            <h3 class="text-3xl font-black text-emerald-400 mb-1">20+</h3>
+                            <p class="text-white font-bold text-lg">Projects</p>
+                            <p class="text-sm text-gray-400 mt-1">Cybersecurity & Programming</p>
+                        </div>
+                        <div class="bg-gray-800 p-6 rounded-xl border border-gray-700 hover:border-emerald-500/50 transition duration-300">
+                            <h3 class="text-3xl font-black text-emerald-400 mb-1">25+</h3>
+                            <p class="text-white font-bold text-lg">Labs</p>
+                            <p class="text-sm text-gray-400 mt-1">Networking & Pentesting</p>
+                        </div>
+                        <div class="sm:col-span-2 bg-gray-800 p-6 rounded-xl border border-gray-700 hover:border-emerald-500/50 transition duration-300">
+                            <h3 class="text-3xl font-black text-emerald-400 mb-1">4+</h3>
+                            <p class="text-white font-bold text-lg">Languages</p>
+                            <p class="text-sm text-gray-400 mt-1">C, Python, Bash, Java, C++, SQL</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
+        <!-- Projects Section - Categorized -->
+        <section id="projects" class="py-24 px-4 bg-gray-800">
+            <div class="max-w-7xl mx-auto">
+                <h2 class="text-3xl md:text-5xl font-extrabold mb-12 text-center text-white relative">
+                    Featured Projects
+                    <span class="block w-20 h-1 bg-emerald-500 mx-auto mt-4 rounded-full"></span>
+                </h2>
+                
+                <div class="space-y-16">
+                    <!-- Cybersecurity Projects -->
+                    <div>
+                        <h3 class="text-2xl font-bold text-white mb-6 flex items-center">
+                            <i data-lucide="lock" class="w-5 h-5 mr-3 text-emerald-500"></i> Cybersecurity Projects
+                        </h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                            <!-- Project 1 -->
+                            <div class="bg-gray-800 p-5 rounded-lg border-l-4 border-emerald-500 hover:bg-gray-750 transition duration-300 shadow-lg">
+                                <h3 class="text-xl font-bold text-white mb-2">SSH Reverse Tunneling</h3>
+                                <p class="text-gray-400 text-sm mb-4 leading-relaxed">HTB-style labs focusing on pivoting and secure access methods.</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-2 py-1 bg-gray-700 text-xs text-emerald-300 rounded-md font-mono border border-gray-600">SSH</span>
+                                    <span class="px-2 py-1 bg-gray-700 text-xs text-emerald-300 rounded-md font-mono border border-gray-600">Tunneling</span>
+                                </div>
+                            </div>
+                            <!-- Project 2 -->
+                            <div class="bg-gray-800 p-5 rounded-lg border-l-4 border-emerald-500 hover:bg-gray-750 transition duration-300 shadow-lg">
+                                <h3 class="text-xl font-bold text-white mb-2">Linux Privilege Escalation</h3>
+                                <p class="text-gray-400 text-sm mb-4 leading-relaxed">Practice scenarios identifying misconfigurations and kernel exploits.</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-2 py-1 bg-gray-700 text-xs text-emerald-300 rounded-md font-mono border border-gray-600">Linux</span>
+                                    <span class="px-2 py-1 bg-gray-700 text-xs text-emerald-300 rounded-md font-mono border border-gray-600">PrivEsc</span>
+                                </div>
+                            </div>
+                            <!-- Project 3 -->
+                            <div class="bg-gray-800 p-5 rounded-lg border-l-4 border-emerald-500 hover:bg-gray-750 transition duration-300 shadow-lg">
+                                <h3 class="text-xl font-bold text-white mb-2">Network Enumeration</h3>
+                                <p class="text-gray-400 text-sm mb-4 leading-relaxed">Vulnerability analysis and mapping using industry-standard tools.</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-2 py-1 bg-gray-700 text-xs text-emerald-300 rounded-md font-mono border border-gray-600">Nmap</span>
+                                    <span class="px-2 py-1 bg-gray-700 text-xs text-emerald-300 rounded-md font-mono border border-gray-600">Analysis</span>
+                                </div>
+                            </div>
+                            <!-- Project 4 -->
+                            <div class="bg-gray-800 p-5 rounded-lg border-l-4 border-emerald-500 hover:bg-gray-750 transition duration-300 shadow-lg">
+                                <h3 class="text-xl font-bold text-white mb-2">Active directory Enumeration</h3>
+                                <p class="text-gray-400 text-sm mb-4 leading-relaxed">Basics active directory enumeration techniaues and exploitation.</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-2 py-1 bg-gray-700 text-xs text-emerald-300 rounded-md font-mono border border-gray-600">Netexec</span>
+                                    <span class="px-2 py-1 bg-gray-700 text-xs text-emerald-300 rounded-md font-mono border border-gray-600">impacket</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Networking Projects -->
+                    <div>
+                        <h3 class="text-2xl font-bold text-white mb-6 flex items-center">
+                            <i data-lucide="globe" class="w-5 h-5 mr-3 text-emerald-500"></i> Networking Projects
+                        </h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                            <!-- Project 1 -->
+                            <div class="bg-gray-800 p-5 rounded-lg border-l-4 border-emerald-500 hover:bg-gray-750 transition duration-300 shadow-lg">
+                                <h3 class="text-xl font-bold text-white mb-2">Switch Configuration</h3>
+                                <p class="text-gray-400 text-sm mb-4 leading-relaxed">VLAN setup, trunking, and MAC Address Table management.</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-2 py-1 bg-gray-700 text-xs text-emerald-300 rounded-md font-mono border border-gray-600">Cisco</span>
+                                    <span class="px-2 py-1 bg-gray-700 text-xs text-emerald-300 rounded-md font-mono border border-gray-600">VLAN</span>
+                                </div>
+                            </div>
+                            <!-- Project 2 -->
+                            <div class="bg-gray-800 p-5 rounded-lg border-l-4 border-emerald-500 hover:bg-gray-750 transition duration-300 shadow-lg">
+                                <h3 class="text-xl font-bold text-white mb-2">Subnetting & Broadcasts</h3>
+                                <p class="text-gray-400 text-sm mb-4 leading-relaxed">Complex calculations for /28, /30, /24 subnets and network segmentation.</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-2 py-1 bg-gray-700 text-xs text-emerald-300 rounded-md font-mono border border-gray-600">Subnetting</span>
+                                    <span class="px-2 py-1 bg-gray-700 text-xs text-emerald-300 rounded-md font-mono border border-gray-600">Design</span>
+                                </div>
+                            </div>
+                            <!-- Project 3 -->
+                            <div class="bg-gray-800 p-5 rounded-lg border-l-4 border-emerald-500 hover:bg-gray-750 transition duration-300 shadow-lg">
+                                <h3 class="text-xl font-bold text-white mb-2">Routing Protocols</h3>
+                                <p class="text-gray-400 text-sm mb-4 leading-relaxed">Implementation of Static & dynamic routing labs (RIP, OSPF).</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-2 py-1 bg-gray-700 text-xs text-emerald-300 rounded-md font-mono border border-gray-600">OSPF</span>
+                                    <span class="px-2 py-1 bg-gray-700 text-xs text-emerald-300 rounded-md font-mono border border-gray-600">Routing</span>
+                                </div>
+                            </div>
+                            <!-- Project 4 -->
+                            <div class="bg-gray-800 p-5 rounded-lg border-l-4 border-emerald-500 hover:bg-gray-750 transition duration-300 shadow-lg">
+                                <h3 class="text-xl font-bold text-white mb-2">Network Simulations</h3>
+                                <p class="text-gray-400 text-sm mb-4 leading-relaxed">Large scale network topology design and simulation.</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-2 py-1 bg-gray-700 text-xs text-emerald-300 rounded-md font-mono border border-gray-600">eNSP</span>
+                                    <span class="px-2 py-1 bg-gray-700 text-xs text-emerald-300 rounded-md font-mono border border-gray-600">Simulation</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Programming Projects -->
+                    <div>
+                        <h3 class="text-2xl font-bold text-white mb-6 flex items-center">
+                            <i data-lucide="code" class="w-5 h-5 mr-3 text-emerald-500"></i> Programming Projects
+                        </h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                            <!-- Project 1 -->
+                            <div class="bg-gray-800 p-5 rounded-lg border-l-4 border-emerald-500 hover:bg-gray-750 transition duration-300 shadow-lg">
+                                <h3 class="text-xl font-bold text-white mb-2">C Hash Table</h3>
+                                <p class="text-gray-400 text-sm mb-4 leading-relaxed">Custom Dictionary implementation managing memory and collisions.</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-2 py-1 bg-gray-700 text-xs text-emerald-300 rounded-md font-mono border border-gray-600">C</span>
+                                    <span class="px-2 py-1 bg-gray-700 text-xs text-emerald-300 rounded-md font-mono border border-gray-600">Data Structures</span>
+                                </div>
+                            </div>
+                            <!-- Project 2 -->
+                            <div class="bg-gray-800 p-5 rounded-lg border-l-4 border-emerald-500 hover:bg-gray-750 transition duration-300 shadow-lg">
+                                <h3 class="text-xl font-bold text-white mb-2">Binary-to-Hex Converter</h3>
+                                <p class="text-gray-400 text-sm mb-4 leading-relaxed">Low-level tool for data format conversion written in C.</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-2 py-1 bg-gray-700 text-xs text-emerald-300 rounded-md font-mono border border-gray-600">C</span>
+                                    <span class="px-2 py-1 bg-gray-700 text-xs text-emerald-300 rounded-md font-mono border border-gray-600">Binary</span>
+                                </div>
+                            </div>
+                            <!-- Project 3 -->
+                            <div class="bg-gray-800 p-5 rounded-lg border-l-4 border-emerald-500 hover:bg-gray-750 transition duration-300 shadow-lg">
+                                <h3 class="text-xl font-bold text-white mb-2">Student Management System</h3>
+                                <p class="text-gray-400 text-sm mb-4 leading-relaxed">Java application utilizing arrays and file I/O for data persistence.</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-2 py-1 bg-gray-700 text-xs text-emerald-300 rounded-md font-mono border border-gray-600">Java</span>
+                                    <span class="px-2 py-1 bg-gray-700 text-xs text-emerald-300 rounded-md font-mono border border-gray-600">File I/O</span>
+                                </div>
+                            </div>
+                            <!-- Project 4 -->
+                            <div class="bg-gray-800 p-5 rounded-lg border-l-4 border-emerald-500 hover:bg-gray-750 transition duration-300 shadow-lg">
+                                <h3 class="text-xl font-bold text-white mb-2">Image manipulation app</h3>
+                                <p class="text-gray-400 text-sm mb-4 leading-relaxed">A tool in C to manipulate ppm image.</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-2 py-1 bg-gray-700 text-xs text-emerald-300 rounded-md font-mono border border-gray-600">C</span>
+                                    <span class="px-2 py-1 bg-gray-700 text-xs text-emerald-300 rounded-md font-mono border border-gray-600">Image Manipulation</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-        </ul>
-      </div>
-    </div>
+        <!-- Skills Section -->
+        <section id="skills" class="py-24 px-4 bg-gray-900">
+            <div class="max-w-6xl mx-auto">
+                <h2 class="text-3xl md:text-5xl font-extrabold mb-12 text-center text-white relative">
+                    Skills & Tools
+                    <span class="block w-20 h-1 bg-emerald-500 mx-auto mt-4 rounded-full"></span>
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    
+                    <div class="bg-gray-800 p-6 rounded-xl border border-gray-700 hover:shadow-lg transition duration-300">
+                        <div class="flex items-center mb-4">
+                            <div class="p-3 bg-gray-700 rounded-lg mr-4">
+                                <i data-lucide="code" class="w-6 h-6 text-blue-400"></i>
+                            </div>
+                            <h4 class="text-xl font-bold text-white">Programming</h4>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-gray-900 text-gray-300 text-sm rounded-full">C</span>
+                            <span class="px-3 py-1 bg-gray-900 text-gray-300 text-sm rounded-full">C++</span>
+                            <span class="px-3 py-1 bg-gray-900 text-gray-300 text-sm rounded-full">Python</span>
+                            <span class="px-3 py-1 bg-gray-900 text-gray-300 text-sm rounded-full">Bash</span>
+                            <span class="px-3 py-1 bg-gray-900 text-gray-300 text-sm rounded-full">Java</span>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gray-800 p-6 rounded-xl border border-gray-700 hover:shadow-lg transition duration-300">
+                        <div class="flex items-center mb-4">
+                            <div class="p-3 bg-gray-700 rounded-lg mr-4">
+                                <i data-lucide="network" class="w-6 h-6 text-emerald-400"></i>
+                            </div>
+                            <h4 class="text-xl font-bold text-white">Networking</h4>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-gray-900 text-gray-300 text-sm rounded-full">Cisco</span>
+                            <span class="px-3 py-1 bg-gray-900 text-gray-300 text-sm rounded-full">eNSP</span>
+                            <span class="px-3 py-1 bg-gray-900 text-gray-300 text-sm rounded-full">Subnetting</span>
+                            <span class="px-3 py-1 bg-gray-900 text-gray-300 text-sm rounded-full">Routing</span>
+                        </div>
+                    </div>
 
-    <div class="dropdown-section">
-      <div class="dropdown-header" onclick="toggleDropdown('certifications')">
-        <h3>Certifications <i class="fas fa-chevron-down"></i></h3>
-      </div>
-      <div class="dropdown-content" id="certifications">
-        <ul class="certifications-list">
-          <li><a href="https://cs50.harvard.edu/certificates/80e37260-553d-433e-ae10-8a4695d4125b" target="_blank">CS50 Introduction to computer science</a></li>
-          <li><a href="https://www.credly.com/users/bryan-gwanulaga" target="_blank">Cisco Introduction to cybersecurity</a></li>
-          <li><a href="https://www.credly.com/users/bryan-gwanulaga" target="_blank">Cisco Networking</a></li>
-          <li><a href="https://cs50.harvard.edu/certificates/8e2a5c5f-b253-4c6c-8edf-6098061865fe" target="_blank">CS50 Introduction to Programming with Python</a></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
+                    <div class="bg-gray-800 p-6 rounded-xl border border-gray-700 hover:shadow-lg transition duration-300">
+                        <div class="flex items-center mb-4">
+                            <div class="p-3 bg-gray-700 rounded-lg mr-4">
+                                <i data-lucide="shield" class="w-6 h-6 text-red-400"></i>
+                            </div>
+                            <h4 class="text-xl font-bold text-white">Cybersecurity</h4>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-gray-900 text-gray-300 text-sm rounded-full">nmap</span>
+                            <span class="px-3 py-1 bg-gray-900 text-gray-300 text-sm rounded-full">Burp Suite</span>
+                            <span class="px-3 py-1 bg-gray-900 text-gray-300 text-sm rounded-full">netexec</span>
+                            <span class="px-3 py-1 bg-gray-900 text-gray-300 text-sm rounded-full">Metasploit</span>
+                            <span class="px-3 py-1 bg-gray-900 text-gray-300 text-sm rounded-full">ligolo-ng</span>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gray-800 p-6 rounded-xl border border-gray-700 hover:shadow-lg transition duration-300">
+                        <div class="flex items-center mb-4">
+                            <div class="p-3 bg-gray-700 rounded-lg mr-4">
+                                <i data-lucide="server" class="w-6 h-6 text-yellow-400"></i>
+                            </div>
+                            <h4 class="text-xl font-bold text-white">OS</h4>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-gray-900 text-gray-300 text-sm rounded-full">Linux (Kali/Ubuntu)</span>
+                            <span class="px-3 py-1 bg-gray-900 text-gray-300 text-sm rounded-full">Windows</span>
+                            <span class="px-3 py-1 bg-gray-900 text-gray-300 text-sm rounded-full">Android os</span>
+                        </div>
+                    </div>
 
-  <!-- Contact Section -->
-<section id="contact">
-  <h2>Contact Me</h2>
-      gwanulagabryan@gmail.com
-  <div class="contact-container">
-    <div class="contact-info">
-      <h3>Got a question? Send me a message, and I'll get back to you soon.</h3>
-      <p>Have something to discuss? Send me a message and let's talk.</p>
-      <div class="social-links">
-        <h4>Connect With Me</h4>
-        <ul>
-          <li><a href="https://www.linkedin.com/in/gwanulaga-bryan/" target="_blank">Let's Connect on LinkedIn</a></li>
-          <li><a href="https://instagram.com/ruiz_bryaan" target="_blank">Instagram @ruiz_bryaan_</a></li>
-          <li><a href="https://github.com/ruiz00" target="_blank">GitHub @ruiz00</a></li>
-          <li><a href="https://tiktok.com/@zero30dark" target="_blank">TikTok @zero30dark</a></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
+                    <div class="bg-gray-800 p-6 rounded-xl border border-gray-700 hover:shadow-lg transition duration-300">
+                        <div class="flex items-center mb-4">
+                            <div class="p-3 bg-gray-700 rounded-lg mr-4">
+                                <i data-lucide="laptop" class="w-6 h-6 text-purple-400"></i>
+                            </div>
+                            <h4 class="text-xl font-bold text-white">Development</h4>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-gray-900 text-gray-300 text-sm rounded-full">Git</span>
+                            <span class="px-3 py-1 bg-gray-900 text-gray-300 text-sm rounded-full">GitHub</span>
+                            <span class="px-3 py-1 bg-gray-900 text-gray-300 text-sm rounded-full">VSCode</span>
+                        </div>
+                    </div>
 
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2025 Bryan Gwanulaga. All rights reserved.</p>
-  </footer>
+                </div>
+            </div>
+        </section>
 
-  <script src="script.js"></script>
-  <script>
-    function toggleDropdown(id) {
-      const content = document.getElementById(id);
-      content.style.display = content.style.display === 'block' ? 'none' : 'block';
-    }
-  </script>
+        <!-- Blog Section -->
+        <section id="blog" class="py-24 px-4 bg-gray-800">
+            <div class="max-w-6xl mx-auto">
+                <h2 class="text-3xl md:text-5xl font-extrabold mb-12 text-center text-white relative">
+                    Blog & Writeups
+                    <span class="block w-20 h-1 bg-emerald-500 mx-auto mt-4 rounded-full"></span>
+                </h2>
+                <p class="text-center text-gray-400 mb-12 max-w-2xl mx-auto">
+                    Here you will soon find writeups and tutorials on cybersecurity, programming, and networking.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Blog Card 1 -->
+                    <div class="bg-gray-800 p-6 rounded-xl hover:shadow-emerald-500/10 hover:shadow-2xl transition duration-300 border border-gray-700 group cursor-pointer">
+                        <div class="flex items-center mb-4">
+                            <i data-lucide="book-open" class="w-5 h-5 text-emerald-500 mr-2 group-hover:scale-110 transition-transform"></i>
+                            <span class="text-emerald-500 text-sm font-bold uppercase tracking-wide">Article</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3 group-hover:text-emerald-400 transition-colors">Beginner's Guide to Subnetting</h3>
+                        <p class="text-gray-400">Understanding networks with step-by-step examples.</p>
+                    </div>
+                    <!-- Blog Card 2 -->
+                    <div class="bg-gray-800 p-6 rounded-xl hover:shadow-emerald-500/10 hover:shadow-2xl transition duration-300 border border-gray-700 group cursor-pointer">
+                        <div class="flex items-center mb-4">
+                            <i data-lucide="book-open" class="w-5 h-5 text-emerald-500 mr-2 group-hover:scale-110 transition-transform"></i>
+                            <span class="text-emerald-500 text-sm font-bold uppercase tracking-wide">Article</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3 group-hover:text-emerald-400 transition-colors">How I Built a Hash Table in C</h3>
+                        <p class="text-gray-400">Memory management, chains, hashing & pitfalls.</p>
+                    </div>
+                    <!-- Blog Card 3 -->
+                    <div class="bg-gray-800 p-6 rounded-xl hover:shadow-emerald-500/10 hover:shadow-2xl transition duration-300 border border-gray-700 group cursor-pointer">
+                        <div class="flex items-center mb-4">
+                            <i data-lucide="book-open" class="w-5 h-5 text-emerald-500 mr-2 group-hover:scale-110 transition-transform"></i>
+                            <span class="text-emerald-500 text-sm font-bold uppercase tracking-wide">Article</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3 group-hover:text-emerald-400 transition-colors">Windows Privilege Escalation Basics</h3>
+                        <p class="text-gray-400">What to look for during a CTF or pentest.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-24 px-4 bg-gray-900 relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-emerald-500 via-blue-500 to-purple-500"></div>
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl md:text-5xl font-extrabold mb-12 text-center text-white relative">
+                    Contact Me
+                    <span class="block w-20 h-1 bg-emerald-500 mx-auto mt-4 rounded-full"></span>
+                </h2>
+                
+                <div class="grid md:grid-cols-2 gap-12 bg-gray-800 p-8 md:p-12 rounded-2xl shadow-2xl">
+                    <div>
+                        <h3 class="text-2xl font-bold text-white mb-6">Let's Connect</h3>
+                        <div class="space-y-6">
+                            <a href="mailto:gwanulagabryan@gmail.com" class="flex items-center text-gray-300 hover:text-emerald-400 transition">
+                                <i data-lucide="messages-square" class="w-5 h-5 mr-4"></i> gwanulagabryan@gmail.com
+                            </a>
+                            <a href="https://www.linkedin.com/in/gwanulaga-bryan/" target="_blank" rel="noopener noreferrer" class="flex items-center text-gray-300 hover:text-emerald-400 transition">
+                                <i data-lucide="user" class="w-5 h-5 mr-4"></i> LinkedIn Profile
+                            </a>
+                            <a href="https://github.com/ruiz00" target="_blank" rel="noopener noreferrer" class="flex items-center text-gray-300 hover:text-emerald-400 transition">
+                                <i data-lucide="code" class="w-5 h-5 mr-4"></i> GitHub Profile
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <form id="contact-form" class="space-y-4">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-400 mb-1">Name</label>
+                            <input id="name" type="text" class="w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-3 text-white focus:border-emerald-500 focus:outline-none transition" placeholder="Your Name" required />
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-400 mb-1">Email</label>
+                            <input id="email" type="email" class="w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-3 text-white focus:border-emerald-500 focus:outline-none transition" placeholder="Your Email" required />
+                        </div>
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-400 mb-1">Message</label>
+                            <textarea id="message" rows="4" class="w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-3 text-white focus:border-emerald-500 focus:outline-none transition" placeholder="Write your message..." required></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-lg transition duration-300 shadow-lg">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 py-8 border-t border-gray-800 text-center">
+        <p class="text-gray-500 text-sm">
+            &copy; <span id="current-year">2025</span> BRYAN GWANULAGA. All rights reserved.
+        </p>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Set current year in footer
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+
+            // --- Mobile Menu Toggle ---
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuIcon = document.getElementById('menu-icon');
+
+            mobileMenuButton.addEventListener('click', () => {
+                const isExpanded = mobileMenu.classList.toggle('hidden');
+                // Update icon based on state (Menu <-> X)
+                menuIcon.setAttribute('data-lucide', isExpanded ? 'menu' : 'x');
+                // Re-render icons after changing the attribute
+                lucide.createIcons();
+            });
+
+            // Close mobile menu when a link is clicked
+            document.querySelectorAll('.mobile-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                    menuIcon.setAttribute('data-lucide', 'menu');
+                    lucide.createIcons();
+                });
+            });
+
+            // --- Contact Form Submission & Notification ---
+            const contactForm = document.getElementById('contact-form');
+            const notificationContainer = document.getElementById('notification-container');
+
+            function showNotification(message, type = 'success') {
+                // Remove existing notifications
+                notificationContainer.innerHTML = '';
+                
+                const notification = document.createElement('div');
+                const baseClasses = 'p-4 rounded-lg shadow-xl text-white flex items-center mb-2 transition-all duration-300 ease-out transform translate-x-0';
+                const typeClasses = type === 'success' ? 'bg-emerald-600' : 'bg-red-600';
+                const icon = type === 'success' ? 'check-circle' : 'shield';
+
+                notification.className = `${baseClasses} ${typeClasses}`;
+                notification.innerHTML = `
+                    <i data-lucide="${icon}" class="w-5 h-5 mr-2"></i>
+                    <span>${message}</span>
+                    <button class="ml-4 font-bold opacity-70 hover:opacity-100">&times;</button>
+                `;
+
+                notificationContainer.appendChild(notification);
+                lucide.createIcons(); // Render the new icon
+
+                // Close functionality
+                notification.querySelector('button').addEventListener('click', () => {
+                    notification.remove();
+                });
+
+                // Auto-close after 5 seconds
+                setTimeout(() => {
+                    if(notification.parentElement) {
+                         notification.remove();
+                    }
+                }, 5000);
+            }
+
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                // In a real application, you would use fetch() to send form data here.
+                
+                // Mock success feedback
+                showNotification('Message Sent! (Note: This is a mock action)', 'success');
+                
+                // Clear the form
+                contactForm.reset();
+            });
+
+            // --- Smooth Scrolling (Optional, done by default with anchor tags but good to ensure) ---
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
 </body>
 </html>
